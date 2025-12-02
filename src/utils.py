@@ -11,7 +11,7 @@ Inclui:
 
 from __future__ import annotations
 
-from typing import List
+from typing import List, Tuple
 
 import numpy as np
 import pandas as pd
@@ -319,3 +319,127 @@ def psi_for_dataframe(
     for col in feature_cols:
         psi_dict[col] = psi_for_feature(df_train[col], df_test[col], n_bins=n_bins)
     return pd.Series(psi_dict).sort_values(ascending=False)
+
+# =========================
+# Demais
+# =========================
+
+def remove_duplicated_columns(
+    df: pd.DataFrame,
+    cols: List[str],
+    drop_from_df: bool = False,
+) -> Tuple[List[str], List[str]]:
+    """
+    Remove colunas duplicadas (mesmo conteúdo) de um subconjunto de colunas.
+
+    Parâmetros
+    ----------
+    df : DataFrame
+        DataFrame com os dados.
+    cols : list of str
+        Lista de colunas a verificar (ex.: colunas categóricas).
+    drop_from_df : bool, default=False
+        Se True, as colunas duplicadas são removidas do próprio df.
+
+    Retorno
+    -------
+    (cols_sem_duplicadas, cols_duplicadas)
+        cols_sem_duplicadas : lista de colunas após remover duplicadas.
+        cols_duplicadas : lista de colunas que foram consideradas duplicadas.
+    """
+    if not cols:
+        return [], []
+
+    sub = df[cols]
+
+    # True para colunas que são cópias exatas de alguma anterior
+    duplicated_mask = sub.T.duplicated(keep="first")
+    dup_cols = sub.columns[duplicated_mask].tolist()
+
+    cols_clean = [c for c in cols if c not in dup_cols]
+
+    if drop_from_df and dup_cols:
+        df.drop(columns=dup_cols, inplace=True)
+
+    return cols_clean, dup_cols
+
+def eda_summary(
+    df: pd.DataFrame,
+    exclude_cols: List[str] | None = None,
+) -> pd.DataFrame:
+    """
+    Gera um resumo descritivo das colunas de um DataFrame para EDA.
+
+    Para cada coluna, calcula:
+    - dtype
+    - count (não nulos)
+    - n_missing e pct_missing
+    - n_unique
+    - mean, std, min, max (quando numérica)
+    - mode (moda, sempre que existir)
+
+    Parâmetros
+    ----------
+    df : DataFrame
+        Base de dados "crua" ou já com algum pré-tratamento.
+    exclude_cols : list of str, opcional
+        Colunas a serem ignoradas no resumo (ex.: ['id', 'safra']).
+
+    Retorno
+    -------
+    DataFrame
+        Uma tabela com uma linha por coluna do df.
+    """
+    if exclude_cols is None:
+        exclude_cols = []
+
+    cols = [c for c in df.columns if c not in exclude_cols]
+
+    summary_rows = []
+
+    for col in cols:
+        s = df[col]
+        dtype = s.dtype
+
+        n_total = len(s)
+        n_non_null = s.notna().sum()
+        n_missing = s.isna().sum()
+        pct_missing = n_missing / n_total if n_total > 0 else 0.0
+        n_unique = s.nunique(dropna=True)
+
+        row = {
+            "coluna": col,
+            "dtype": str(dtype),
+            "count": int(n_non_null),
+            "n_missing": int(n_missing),
+            "pct_missing": float(pct_missing),
+            "n_unique": int(n_unique),
+        }
+
+        # estatísticas numéricas básicas
+        if np.issubdtype(s.dropna().dtype, np.number):
+            row["mean"] = float(s.mean())
+            row["std"] = float(s.std())
+            row["min"] = float(s.min())
+            row["max"] = float(s.max())
+        else:
+            row["mean"] = np.nan
+            row["std"] = np.nan
+            row["min"] = np.nan
+            row["max"] = np.nan
+
+        # moda (primeira moda se houver mais de uma)
+        if n_non_null > 0:
+            mode_vals = s.mode(dropna=True)
+            row["mode"] = mode_vals.iloc[0] if len(mode_vals) > 0 else np.nan
+        else:
+            row["mode"] = np.nan
+
+        summary_rows.append(row)
+
+    summary_df = pd.DataFrame(summary_rows)
+
+    # Ordena por tipo e nome de coluna, se quiser
+    summary_df = summary_df.sort_values(by=["dtype", "coluna"]).reset_index(drop=True)
+
+    return summary_df
