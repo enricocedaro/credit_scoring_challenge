@@ -66,5 +66,6 @@ Rodar os notebooks presentes em _notebooks/_ na ordem indicada no início de cad
 
 ### 4. Relatório final
 
-O relatório está presente no link 
+O relatório está presente no link https://enricocedaro.github.io/credit_scoring_challenge/
+
 Obs.:_Não sera aplicada uma licença, qualquer reutilização deve preservar o contexto original do case e a autoria do código._
