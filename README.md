@@ -22,17 +22,15 @@ Este repositório contém a solução desenvolvida para um case técnico de **Ci
 │   ├── processed/     # Bases tratadas e prontas para modelagem
 ├── models/            # Modelos treinados, artefatos e objetos serializados
 ├── notebooks/
-│   ├── 01_eda.ipynb               # Exploração inicial dos dados
+│   ├── 01_ exploratory_data_analysis.ipynb # Exploração inicial dos dados
 │   ├── 02_feature_engineering.ipynb # Criação/seleção de variáveis
 │   ├── 03_model_training.ipynb         # Treino, tuning e comparação de modelos
-│   └── 04_analise_resultados.ipynb # Análises finais e gráficos
+│   └── 04_tunning.ipynb # Tunning do modelo
+│   └── 05_tunning.ipynb # Análises finais e gráficos
 ├── reports/
 │   ├── figures/       # Imagens e gráficos gerados
-│   └── credit_scoring_case_report.pdf  # Relatório final do case
-├── src/
-|   ├── __init__.py   # pode ficar vazio
-│   ├── metrics.py      # métricas genéricas (AUC, KS, etc.)
-│   ├── models.py        # Treino, avaliação e persistência de modelos
+│   └── quarto/        # Ferramenta para visualização
+├── src/               # utils.py e funções auxiliaress
 ├── requirements.txt   # Dependências do projeto
 └── README.md
 ```
@@ -66,5 +64,7 @@ pip install -r requirements.txt
 
 Rodar os notebooks presentes em _notebooks/_ na ordem indicada no início de cada arquivo
 
+### 4. Relatório final
 
+O relatório está presente no link 
 Obs.:_Não sera aplicada uma licença, qualquer reutilização deve preservar o contexto original do case e a autoria do código._

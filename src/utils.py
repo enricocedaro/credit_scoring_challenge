@@ -244,50 +244,48 @@ def psi_for_feature(
     train: pd.Series, test: pd.Series, n_bins: int = 10
 ) -> float:
     """
-    Calcula o PSI de uma feature contínua/categorizada, usando bins baseados no treino.
-
-    Parâmetros
-    ----------
-    train : Series
-        Valores da feature no conjunto de treino.
-    test : Series
-        Valores da feature no conjunto de teste/validação.
-    n_bins : int, default=10
-        Número de bins (quantis) usados para o cálculo.
-
-    Retorno
-    -------
-    float
-        Valor do PSI para a feature.
+    Calcula o PSI de uma feature, tratando missing como um bin separado
+    e usando quantis do treino para definir os bins.
     """
-    # Remove NaN
-    train = train.dropna()
-    test = test.dropna()
+    train = pd.Series(train)
+    test  = pd.Series(test)
 
-    # Definir bins com base no treino (quantis)
+    # máscaras de missing
+    mask_exp_nan = train.isna()
+    mask_act_nan = test.isna()
+
+    # só não nulos para definir os bins
+    train_non_null = train[~mask_exp_nan]
+    test_non_null  = test[~mask_act_nan]
+
+    if train_non_null.empty:
+        return 0.0
+
     quantiles = np.linspace(0, 1, n_bins + 1)
-    bin_edges = np.unique(np.quantile(train, quantiles))
-
-    # Se der menos de 2 edges únicos, PSI = 0 (sem variação)
+    bin_edges = np.unique(np.quantile(train_non_null, quantiles))
     if len(bin_edges) < 2:
         return 0.0
 
-    train_bins = pd.cut(train, bins=bin_edges, include_lowest=True)
-    test_bins = pd.cut(test, bins=bin_edges, include_lowest=True)
+    exp_bins = pd.cut(train_non_null, bins=bin_edges, include_lowest=True)
+    act_bins = pd.cut(test_non_null,  bins=bin_edges, include_lowest=True)
 
-    train_dist = train_bins.value_counts(normalize=True).sort_index()
-    test_dist = test_bins.value_counts(normalize=True).sort_index()
+    # adiciona "Missing" como categoria
+    exp_all = pd.concat([exp_bins, pd.Series(["Missing"] * mask_exp_nan.sum())])
+    act_all = pd.concat([act_bins, pd.Series(["Missing"] * mask_act_nan.sum())])
 
-    # Alinha índices
-    test_dist = test_dist.reindex(train_dist.index).fillna(0.0)
+    # NÃO ordenar por índice (mistura Interval e str)
+    exp_dist = exp_all.value_counts(normalize=True)
+    act_dist = act_all.value_counts(normalize=True)
 
-    # Evitar log(0)
-    epsilon = 1e-6
-    train_dist = train_dist.clip(epsilon, 1)
-    test_dist = test_dist.clip(epsilon, 1)
+    # Alinha act_dist ao índice de exp_dist
+    act_dist = act_dist.reindex(exp_dist.index).fillna(0.0)
 
-    psi_values = (train_dist - test_dist) * np.log(train_dist / test_dist)
-    return float(psi_values.sum())
+    eps = 1e-6
+    exp_dist = exp_dist.clip(eps, 1)
+    act_dist = act_dist.clip(eps, 1)
+
+    psi_vals = (exp_dist - act_dist) * np.log(exp_dist / act_dist)
+    return float(psi_vals.sum())
 
 
 def psi_for_dataframe(

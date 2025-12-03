@@ -1,0 +1,112 @@
+.center {
+  text-align: center;
+}
+.spacer {
+  margin-top: 2em;   /* espaço antes */
+  margin-bottom: 2em; /* espaço depois */
+}
+.big-output pre code {
+  font-size: 2em; /* deixa bem grande */
+}
+
+.spacer-bottom-2 {
+  margin-top: 2em;   /* espaço antes */
+  margin-bottom: 0em; /* espaço depois */
+}
+
+.spacer-bottom {
+  margin-top: 10em;   /* espaço antes */
+  margin-bottom: 0em; /* espaço depois */
+}
+/* Isso força o fundo do body a usar a COR PRIMÁRIA do tema ativo (SuperHero/Quartz) */
+body {
+    background-color: #ffffff !important; 
+    
+    /* Opcional: Garante que a cor do texto seja clara em um fundo escuro */
+    color: #000000 !important;
+}
+
+
+/* --- FUNDO DA NAVBAR --- */
+.navbar {
+    background-color: #00cc73 !important; /* Fundo branco */
+}
+
+/* --- ESTILO GERAL DO TEXTO NA NAVBAR --- */
+
+/* 1. Altera a cor do Título/Brand (o texto "PicPay - Case Técnico") */
+.navbar-brand {
+    color: #ffffff !important; /* Texto branco */
+}
+
+/* 2. Altera a cor dos Links de Navegação (itens de menu que você adicionar) */
+.navbar .nav-link {
+    color: #ffffff !important; /* Texto preto */
+}
+
+/* --- ESTADOS DE INTERAÇÃO (HOVER e ATIVO) --- */
+
+/* 3. Altera a cor do TEXTO QUANDO O MOUSE ESTÁ SOBRE (HOVER) */
+.navbar .nav-link:hover {
+    color: #dddcdc !important; /* Cor de destaque (verde) ao passar o mouse */
+    /* Você pode adicionar um background se quiser: */
+    /* background-color: #f0f0f0 !important; */
+}
+
+/* 4. Altera o estilo do LINK ATIVO (A página que o usuário está) */
+.navbar .nav-link.active {
+    color: #ffffff !important; /* Cor de destaque (verde) para o link ativo */
+    border-bottom: 2px solid #00cc73 !important; /* Opcional: Adiciona uma linha inferior para destaque */
+}
+
+/* --- FUNDO DA SIDEBAR (Mantendo a cor de fundo) --- */
+.sidebar {
+    background-color: #ffffff !important; 
+}
+
+/* --- GARANTINDO O BRANCO (TEXTO/LINKS) --- */
+
+/* 1. Altera a cor do Título da Seção (ex: "Etapas") */
+.sidebar .sidebar-section-title {
+    color: #000000 !important;
+}
+
+/* 2. Altera a cor de TODOS os links/itens da Sidebar em seu estado NORMAL, HOVER e ATIVO */
+/* O seletor 'a' aqui mira diretamente na tag do link */
+.sidebar a {
+    color: #000000 !important;
+}
+
+/* 3. Altera a cor do TEXTO QUANDO O MOUSE ESTÁ SOBRE (HOVER) */
+.sidebar a:hover {
+    color: #363636 !important; /* Cor branca levemente diferente no hover */
+}
+
+/* 4. Altera a cor do TEXTO QUANDO O LINK ESTÁ ATIVO (A página que você está visualizando) */
+.sidebar a.active {
+    color: #00cc73 !important; /* Exemplo: Texto preto para contraste com o fundo azul claro abaixo */
+    background-color: #ffffff !important; /* O fundo do link ativo que definimos antes */
+}
+/* --- SOBRESCREVENDO O FUNDO DO RODAPÉ --- */
+
+/* Sobrescreve a cor de fundo forçada pelo tema (geralmente bg-dark) */
+.page-footer.bg-dark, .page-footer.bg-secondary {
+    background-color: #000000 !important; /* SUA COR DE FUNDO EXATA */
+}
+
+/* Garante que o texto e os ícones sejam claros */
+.page-footer a, 
+.page-footer {
+    color: #FFFFFF !important; /* SUA COR DE FONTE EXATA */
+}
+
+.navbar .navbar-brand img {
+    /* Defina a altura desejada aqui */
+    height: 50px !important; 
+    
+    /* Garantimos que a largura se ajuste proporcionalmente */
+    width: auto !important; 
+    
+    /* Opcional: Garante que a imagem não seja cortada */
+    max-height: 50px !important; 
+}

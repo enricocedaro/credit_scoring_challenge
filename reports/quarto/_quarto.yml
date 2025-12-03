@@ -1,0 +1,61 @@
+project:
+  type: website
+  output-dir: docs
+
+website:
+  title: 'Modelo de Credit Scoring | Case Técnico'
+  favicon: images/bola_verde.png
+  search: true
+  navbar:
+    logo: images/model.png
+    # left:
+    #   - href: index.md
+    #     text: Página inicial
+    #   - text: Bases utilizadas
+    #     menu:
+    #       - href: index.md
+    #         text: Base sem tratamento
+    #       - href: index.md
+    #         text: Base com tratamento
+    #       - href: index.md
+    #         text: Base Final
+    #   - text: Sobre mim
+    #     menu:
+    #       - href: index.md
+    #         text: Quem sou eu?
+    #       - href: index.md
+    #         text: Currículo
+  sidebar:
+    style: "docked"
+    search: true
+    contents:
+      - text: '00. Introdução'
+        href: index.md
+      - text: "01. Exploratory Data Analysis"  
+        href: abas/01_exploratory_data_analysis.md
+      - text: "02. Feature Enginee"  
+        href: abas/02_feature_engineering.md
+      - text: "03. Model Training"  
+        href: abas/03_model_training.md
+      - text: "04. Tunning"  
+        href: abas/04_tunning.md
+      - text: "05. Final Model"  
+        href: abas/05_final_model.md
+            
+  page-footer:
+    left: "© 2025, Cedaro Enrico" 
+    right:
+      - icon: github
+        href: https://github.com/enricocedaro
+      - icon: linkedin
+        href: https://www.linkedin.com/in/enricocedaro/
+
+format:
+  html:
+    embed-resources: true
+    theme: flatly
+    css: styles.css
+    echo: false
+    toc: true
+    toc-depth: 3 # Define até qual nível de heading (H3) o índice irá
+    toc-title: "Nesta Página"
