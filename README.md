@@ -20,6 +20,7 @@ Este repositório contém a solução desenvolvida para um case técnico de **Ci
 ├── data/
 │   ├── raw/           # Dados originais fornecidos no desafio
 │   ├── processed/     # Bases tratadas e prontas para modelagem
+├── docs/            # Pasta reponsável por gerar o website de apresentação
 ├── models/            # Modelos treinados, artefatos e objetos serializados
 ├── notebooks/
 │   ├── 01_ exploratory_data_analysis.ipynb # Exploração inicial dos dados
