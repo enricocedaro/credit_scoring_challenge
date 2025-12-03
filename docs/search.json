@@ -1,0 +1,292 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "📄 Introdução: Credit Scoring Challenge",
+    "section": "",
+    "text": "Este relatório técnico tem como objetivo primário a construção de um modelo de Credit Scoring.\n\n\n\nA base de dados utilizada compõe-se de 10.738 registros e 81 variáveis mascaradas, sendo que o “id” é a chave única da tabela, “safra” é o mês ano de concessão do crédito, “y” é a variável target e as demais são variáveis preditoras mascaradas.\n\n\n\nO projeto abrange o fluxo completo de Data Science, focado em entregar um modelo de Credit Scoring estável e aplicável ao negócio.\nA metodologia é estruturada em quatro pilares:\n\n\nExploratory Data Analysis (EDA): Exploração dos dados.\nFeature Engineering: Limpeza de variáveis, separação, imputação etc.\nModel Training: Comparação de algoritmos (priorizando estabilidade e interpretabilidade) para identificar o melhor preditor.\nTunning: Aplicação de metódos para encontrar os melhores parâmetros do modelo.\nFinal Model: Análise final de métricas (AUC, Gini, KS).",
+    "crumbs": [
+      "00. Introdução"
+    ]
+  },
+  {
+    "objectID": "index.html#objetivo-central",
+    "href": "index.html#objetivo-central",
+    "title": "📄 Introdução: Credit Scoring Challenge",
+    "section": "",
+    "text": "Este relatório técnico tem como objetivo primário a construção de um modelo de Credit Scoring.",
+    "crumbs": [
+      "00. Introdução"
+    ]
+  },
+  {
+    "objectID": "index.html#estrutura-do-desafio-e-dados",
+    "href": "index.html#estrutura-do-desafio-e-dados",
+    "title": "📄 Introdução: Credit Scoring Challenge",
+    "section": "",
+    "text": "A base de dados utilizada compõe-se de 10.738 registros e 81 variáveis mascaradas, sendo que o “id” é a chave única da tabela, “safra” é o mês ano de concessão do crédito, “y” é a variável target e as demais são variáveis preditoras mascaradas.",
+    "crumbs": [
+      "00. Introdução"
+    ]
+  },
+  {
+    "objectID": "index.html#escopo-e-metodologia",
+    "href": "index.html#escopo-e-metodologia",
+    "title": "📄 Introdução: Credit Scoring Challenge",
+    "section": "",
+    "text": "O projeto abrange o fluxo completo de Data Science, focado em entregar um modelo de Credit Scoring estável e aplicável ao negócio.\nA metodologia é estruturada em quatro pilares:\n\n\nExploratory Data Analysis (EDA): Exploração dos dados.\nFeature Engineering: Limpeza de variáveis, separação, imputação etc.\nModel Training: Comparação de algoritmos (priorizando estabilidade e interpretabilidade) para identificar o melhor preditor.\nTunning: Aplicação de metódos para encontrar os melhores parâmetros do modelo.\nFinal Model: Análise final de métricas (AUC, Gini, KS).",
+    "crumbs": [
+      "00. Introdução"
+    ]
+  },
+  {
+    "objectID": "abas/04_tunning.html",
+    "href": "abas/04_tunning.html",
+    "title": "4. 🔬 Tunning e Modelo de Regressão Logística Final",
+    "section": "",
+    "text": "Nesta etapa, o modelo de Regressão Logística escolhido na Etapa 3 é otimizado usando pesquisa de hiperparâmetros e, em seguida, validado no conjunto de Teste Out-of-Time (OOT).\n\n\n\nO modelo foi otimizado utilizando o RandomizedSearchCV, buscando maximizar o KS Score, uma métrica crítica para separação de risco\nO processo de tunning focou na regularização do modelo para evitar overfitting e garantir a robustez.\nMelhores Parâmetros Encontrados:\n\n\n\nParâmetro\nValor Otimizado\n\n\n\n\nn_estimators\n800\n\n\nlearning_rate\n0.01\n\n\nsubsample\n0.7\n\n\nreg_alpha / reg_lambda\n0.0 / 0.0\n\n\n\n\n\n\n\nO modelo otimizado foi treinado na base completa de Treino e avaliado no conjunto de Teste OOT, confirmando seu potencial máximo.\n\n\n\nMétrica\nValor\n\n\n\n\nKS\n0.313688\n\n\nAUC\n0.708333\n\n\nGini\n0.416665\n\n\n\nApós o tunning, o LightGBM alcançou o melhor desempenho absoluto no Teste OOT, com AUC de 0.708 e Gini de 0.417. Este resultado supera o modelo de Regressão Logística (AUC 0.701) e confirma o LightGBM como o modelo mais preditivo para o modelo.",
+    "crumbs": [
+      "04. Tunning"
+    ]
+  },
+  {
+    "objectID": "abas/04_tunning.html#estratégia-de-otimização",
+    "href": "abas/04_tunning.html#estratégia-de-otimização",
+    "title": "4. 🔬 Tunning e Modelo de Regressão Logística Final",
+    "section": "",
+    "text": "O modelo foi otimizado utilizando o RandomizedSearchCV, buscando maximizar o KS Score, uma métrica crítica para separação de risco\nO processo de tunning focou na regularização do modelo para evitar overfitting e garantir a robustez.\nMelhores Parâmetros Encontrados:\n\n\n\nParâmetro\nValor Otimizado\n\n\n\n\nn_estimators\n800\n\n\nlearning_rate\n0.01\n\n\nsubsample\n0.7\n\n\nreg_alpha / reg_lambda\n0.0 / 0.0",
+    "crumbs": [
+      "04. Tunning"
+    ]
+  },
+  {
+    "objectID": "abas/04_tunning.html#performance-final-do-lightgbm-teste-oot",
+    "href": "abas/04_tunning.html#performance-final-do-lightgbm-teste-oot",
+    "title": "4. 🔬 Tunning e Modelo de Regressão Logística Final",
+    "section": "",
+    "text": "O modelo otimizado foi treinado na base completa de Treino e avaliado no conjunto de Teste OOT, confirmando seu potencial máximo.\n\n\n\nMétrica\nValor\n\n\n\n\nKS\n0.313688\n\n\nAUC\n0.708333\n\n\nGini\n0.416665\n\n\n\nApós o tunning, o LightGBM alcançou o melhor desempenho absoluto no Teste OOT, com AUC de 0.708 e Gini de 0.417. Este resultado supera o modelo de Regressão Logística (AUC 0.701) e confirma o LightGBM como o modelo mais preditivo para o modelo.",
+    "crumbs": [
+      "04. Tunning"
+    ]
+  },
+  {
+    "objectID": "abas/02_feature_engineering.html",
+    "href": "abas/02_feature_engineering.html",
+    "title": "⚙️ 2. Feature Engineering e Seleção de Variáveis",
+    "section": "",
+    "text": "Esta seção detalha as técnicas de pré-processamento e seleção aplicadas para garantir um conjunto de features robusto e de alta qualidade para a modelagem. O objetivo é remover ruídos, redundâncias e variáveis instáveis.\n\n\n\nO primeiro passo foi remover variáveis que não agregam valor preditivo ou que apresentam alta incerteza devido à falta de dados.\nCritério de Descarte adotado para Missing Values: Variáveis com mais de 60% de valores ausentes foram descartadas.\n\n\n\n\n\n\n\n\n\nTipo de Variável Removida\nContagem\nExemplo\nJustificativa\n\n\n\n\nAlto Missing (&gt;60%)\n19\nVAR_62, VAR_70, etc.\nAlta incerteza e baixa confiabilidade estatística.\n\n\nConstante\n0\nN/A\nNão há variáveis com valor único.\n\n\nID-Like\n1\nID_COL\nVariáveis únicas por linha não carregam informação generalizável.\n\n\n\n19 features foram removidas, resultando em 62 features restantes para a análise (81 originais - 19 removidas).\n\n\n\n\nA classificação correta das variáveis é uma etapa essencial para garantir que o pré-processamento subsequente seja aplicado de forma adequada (ex: One-Hot Encoding para categóricas, Scaling para numéricas).\n\n\nDada a natureza mascarada das features, a distinção entre variáveis contínuas e discretas foi feita utilizando a Cardinalidade (número de valores únicos) como critério principal.\nThreshold Definido: Foi estabelecido um threshold de 25 valores únicos.\n\nVariáveis Categóricas (CAT_VARS): Features com até 25 valores únicos foram classificadas como categóricas, pois representam um conjunto discreto e gerenciável de classes.\nVariáveis Numéricas (NUM_VARS): Features com mais de 25 valores únicos foram classificadas como numéricas, indicando uma distribuição de dados contínua ou de alta variância.\n\n\n\n\nApós a classificação, as features em CAT_VARS foram explicitamente convertidas para o tipo object (tipo Python para string ou categoria). Esta conversão é necessária para garantir que os pipelines de pré-processamento (como OneHotEncoder) as tratem corretamente, independentemente de seu tipo original.\n\n\n\n\n\nVariáveis com baixíssima variação (proximidade de valor constante) não distinguem bem os clientes e são removidas.\nBaixa Variância: Foi definido um threshold de 0.001. Apenas 1 feature foi removida por ter variância muito próxima de zero.\nA base não possui colunas duplicadas.\n\n\n\n\nA multicolinearidade entre features numéricas é prejudicial para a modelagem, pois torna os coeficientes do modelo instáveis e difíceis de interpretar.\nCritério de Descarte: Manter apenas uma variável de cada par que apresentava correlação absoluta superior a 0.9 na base de Treino.\n\n\n\nvar1\nvar2\ncorr\n\n\n\n\nVAR_19\nVAR_22\n0.975977\n\n\nVAR_10\nVAR_69\n0.975103\n\n\nVAR_24\nVAR_58\n0.974130\n\n\nVAR_39\nVAR_45\n0.972208\n\n\nVAR_14\nVAR_26\n0.954847\n\n\n\n5 features foram removidas devido à alta correlação. O conjunto de dados final possui 56 features candidatas (61 restantes - 5 removidas).",
+    "crumbs": [
+      "02. Feature Enginee"
+    ]
+  },
+  {
+    "objectID": "abas/02_feature_engineering.html#filtragem-inicial-missing-constantes-e-ids",
+    "href": "abas/02_feature_engineering.html#filtragem-inicial-missing-constantes-e-ids",
+    "title": "⚙️ 2. Feature Engineering e Seleção de Variáveis",
+    "section": "",
+    "text": "O primeiro passo foi remover variáveis que não agregam valor preditivo ou que apresentam alta incerteza devido à falta de dados.\nCritério de Descarte adotado para Missing Values: Variáveis com mais de 60% de valores ausentes foram descartadas.\n\n\n\n\n\n\n\n\n\nTipo de Variável Removida\nContagem\nExemplo\nJustificativa\n\n\n\n\nAlto Missing (&gt;60%)\n19\nVAR_62, VAR_70, etc.\nAlta incerteza e baixa confiabilidade estatística.\n\n\nConstante\n0\nN/A\nNão há variáveis com valor único.\n\n\nID-Like\n1\nID_COL\nVariáveis únicas por linha não carregam informação generalizável.\n\n\n\n19 features foram removidas, resultando em 62 features restantes para a análise (81 originais - 19 removidas).",
+    "crumbs": [
+      "02. Feature Enginee"
+    ]
+  },
+  {
+    "objectID": "abas/02_feature_engineering.html#classificação-de-variáveis-categóricas-vs.-numéricas",
+    "href": "abas/02_feature_engineering.html#classificação-de-variáveis-categóricas-vs.-numéricas",
+    "title": "⚙️ 2. Feature Engineering e Seleção de Variáveis",
+    "section": "",
+    "text": "A classificação correta das variáveis é uma etapa essencial para garantir que o pré-processamento subsequente seja aplicado de forma adequada (ex: One-Hot Encoding para categóricas, Scaling para numéricas).\n\n\nDada a natureza mascarada das features, a distinção entre variáveis contínuas e discretas foi feita utilizando a Cardinalidade (número de valores únicos) como critério principal.\nThreshold Definido: Foi estabelecido um threshold de 25 valores únicos.\n\nVariáveis Categóricas (CAT_VARS): Features com até 25 valores únicos foram classificadas como categóricas, pois representam um conjunto discreto e gerenciável de classes.\nVariáveis Numéricas (NUM_VARS): Features com mais de 25 valores únicos foram classificadas como numéricas, indicando uma distribuição de dados contínua ou de alta variância.\n\n\n\n\nApós a classificação, as features em CAT_VARS foram explicitamente convertidas para o tipo object (tipo Python para string ou categoria). Esta conversão é necessária para garantir que os pipelines de pré-processamento (como OneHotEncoder) as tratem corretamente, independentemente de seu tipo original.",
+    "crumbs": [
+      "02. Feature Enginee"
+    ]
+  },
+  {
+    "objectID": "abas/02_feature_engineering.html#filtragem-por-baixa-variância-e-duplicatas",
+    "href": "abas/02_feature_engineering.html#filtragem-por-baixa-variância-e-duplicatas",
+    "title": "⚙️ 2. Feature Engineering e Seleção de Variáveis",
+    "section": "",
+    "text": "Variáveis com baixíssima variação (proximidade de valor constante) não distinguem bem os clientes e são removidas.\nBaixa Variância: Foi definido um threshold de 0.001. Apenas 1 feature foi removida por ter variância muito próxima de zero.\nA base não possui colunas duplicadas.",
+    "crumbs": [
+      "02. Feature Enginee"
+    ]
+  },
+  {
+    "objectID": "abas/02_feature_engineering.html#tratamento-de-multicolinearidade-alta-correlação",
+    "href": "abas/02_feature_engineering.html#tratamento-de-multicolinearidade-alta-correlação",
+    "title": "⚙️ 2. Feature Engineering e Seleção de Variáveis",
+    "section": "",
+    "text": "A multicolinearidade entre features numéricas é prejudicial para a modelagem, pois torna os coeficientes do modelo instáveis e difíceis de interpretar.\nCritério de Descarte: Manter apenas uma variável de cada par que apresentava correlação absoluta superior a 0.9 na base de Treino.\n\n\n\nvar1\nvar2\ncorr\n\n\n\n\nVAR_19\nVAR_22\n0.975977\n\n\nVAR_10\nVAR_69\n0.975103\n\n\nVAR_24\nVAR_58\n0.974130\n\n\nVAR_39\nVAR_45\n0.972208\n\n\nVAR_14\nVAR_26\n0.954847\n\n\n\n5 features foram removidas devido à alta correlação. O conjunto de dados final possui 56 features candidatas (61 restantes - 5 removidas).",
+    "crumbs": [
+      "02. Feature Enginee"
+    ]
+  },
+  {
+    "objectID": "abas/01_exploratory_data_analysis.html",
+    "href": "abas/01_exploratory_data_analysis.html",
+    "title": "1. 📄 Análise Exploratória de Dados (EDA)",
+    "section": "",
+    "text": "Este capítulo apresenta a exploração da base de dados, a definição da separação de teste e treino e as análises iniciais de qualidade e distribuição de risco.\n\n\n\nA base de dados bruta contém 10.738 observações e 81 colunas (incluindo id, safra e features).\nDefinição da Variável Alvo (y) - não tem nulos\n\ny = 1 (Mau Pagador): Inadimplência (default)\ny = 0 (Bom Pagador): Não-inadimplência\n\nA Taxa de Inadimplência Global da amostra é de 29,13%.\n\n\n\nClasse\nContagem Absoluta\nProporção\n\n\n\n\n0 (Bom Pagador)\n7.610\n70,87%\n\n\n1 (Mau Pagador)\n3.128\n29,13%\n\n\n\n\n\n\n\nA análise do risco ao longo do tempo (safra) é crucial em crédito. A base abrange 12 meses, de 01/2014 a 12/2014.\nO gráfico abaixo mostra a variação da taxa de inadimplência (média de y) em cada safra.\n\nA taxa de inadimplência demonstra uma tendência de aumento nas safras finais (11/2014 e 12/2014), atingindo o pico de 35,24% na última safra. Este pico é significativamente maior do que a média da amostra (29,13%), sugerindo uma possível instabilidade temporal ou uma mudança no perfil de risco dos clientes mais recentes.\n\n\n\n\nPara garantir que o modelo de Credit Scoring seja robusto ao longo do tempo, é essencial monitorar as features mais preditivas e verificar se suas distribuições se mantêm estáveis ao longo das safras.\nGráfico de estabilidade da VAR_1:\n\n\n\n\n\nA qualidade dos dados foi avaliada, com foco na presença de valores ausentes (Missing Values).\nTotal de Features Analisadas: 78 Amostra Total: 10.738 linhas\n\nConclusão e Próxima Etapa: Há uma grande quantidade de variáveis com uma alta percentagem de valores ausentes (mais de 50%). Na fase 02_feature_engineering.ipynb, será necessário definir um limite de corte para descarte de variáveis.\n\n\n\n\nSeparação temporal entre treino e teste:\nEmbora a base permita uma divisão aleatória entre treino e teste, optei por utilizar a variável safra para construir um cenário mais próximo do uso real do modelo em produção.\nAlém disso foi considerado a inadimplência das safras, com as últimas sendo “piores”.\nTreino: safra &lt;= 2024-09 (28% de default médio)\nTeste out-of-time: safra &gt; 2024-09 (32% de default médio)",
+    "crumbs": [
+      "01. Exploratory Data Analysis"
+    ]
+  },
+  {
+    "objectID": "abas/01_exploratory_data_analysis.html#definição-do-target-e-distribuição-da-amostra",
+    "href": "abas/01_exploratory_data_analysis.html#definição-do-target-e-distribuição-da-amostra",
+    "title": "1. 📄 Análise Exploratória de Dados (EDA)",
+    "section": "",
+    "text": "A base de dados bruta contém 10.738 observações e 81 colunas (incluindo id, safra e features).\nDefinição da Variável Alvo (y) - não tem nulos\n\ny = 1 (Mau Pagador): Inadimplência (default)\ny = 0 (Bom Pagador): Não-inadimplência\n\nA Taxa de Inadimplência Global da amostra é de 29,13%.\n\n\n\nClasse\nContagem Absoluta\nProporção\n\n\n\n\n0 (Bom Pagador)\n7.610\n70,87%\n\n\n1 (Mau Pagador)\n3.128\n29,13%",
+    "crumbs": [
+      "01. Exploratory Data Analysis"
+    ]
+  },
+  {
+    "objectID": "abas/01_exploratory_data_analysis.html#estabilidade-temporal-da-inadimplência-análise-por-safra",
+    "href": "abas/01_exploratory_data_analysis.html#estabilidade-temporal-da-inadimplência-análise-por-safra",
+    "title": "1. 📄 Análise Exploratória de Dados (EDA)",
+    "section": "",
+    "text": "A análise do risco ao longo do tempo (safra) é crucial em crédito. A base abrange 12 meses, de 01/2014 a 12/2014.\nO gráfico abaixo mostra a variação da taxa de inadimplência (média de y) em cada safra.\n\nA taxa de inadimplência demonstra uma tendência de aumento nas safras finais (11/2014 e 12/2014), atingindo o pico de 35,24% na última safra. Este pico é significativamente maior do que a média da amostra (29,13%), sugerindo uma possível instabilidade temporal ou uma mudança no perfil de risco dos clientes mais recentes.",
+    "crumbs": [
+      "01. Exploratory Data Analysis"
+    ]
+  },
+  {
+    "objectID": "abas/01_exploratory_data_analysis.html#estabilidade-das-variáveis-por-safra",
+    "href": "abas/01_exploratory_data_analysis.html#estabilidade-das-variáveis-por-safra",
+    "title": "1. 📄 Análise Exploratória de Dados (EDA)",
+    "section": "",
+    "text": "Para garantir que o modelo de Credit Scoring seja robusto ao longo do tempo, é essencial monitorar as features mais preditivas e verificar se suas distribuições se mantêm estáveis ao longo das safras.\nGráfico de estabilidade da VAR_1:",
+    "crumbs": [
+      "01. Exploratory Data Analysis"
+    ]
+  },
+  {
+    "objectID": "abas/01_exploratory_data_analysis.html#qualidade-e-saúde-dos-dados-valores-ausentes",
+    "href": "abas/01_exploratory_data_analysis.html#qualidade-e-saúde-dos-dados-valores-ausentes",
+    "title": "1. 📄 Análise Exploratória de Dados (EDA)",
+    "section": "",
+    "text": "A qualidade dos dados foi avaliada, com foco na presença de valores ausentes (Missing Values).\nTotal de Features Analisadas: 78 Amostra Total: 10.738 linhas\n\nConclusão e Próxima Etapa: Há uma grande quantidade de variáveis com uma alta percentagem de valores ausentes (mais de 50%). Na fase 02_feature_engineering.ipynb, será necessário definir um limite de corte para descarte de variáveis.",
+    "crumbs": [
+      "01. Exploratory Data Analysis"
+    ]
+  },
+  {
+    "objectID": "abas/01_exploratory_data_analysis.html#seleção-da-base-treino-e-teste",
+    "href": "abas/01_exploratory_data_analysis.html#seleção-da-base-treino-e-teste",
+    "title": "1. 📄 Análise Exploratória de Dados (EDA)",
+    "section": "",
+    "text": "Separação temporal entre treino e teste:\nEmbora a base permita uma divisão aleatória entre treino e teste, optei por utilizar a variável safra para construir um cenário mais próximo do uso real do modelo em produção.\nAlém disso foi considerado a inadimplência das safras, com as últimas sendo “piores”.\nTreino: safra &lt;= 2024-09 (28% de default médio)\nTeste out-of-time: safra &gt; 2024-09 (32% de default médio)",
+    "crumbs": [
+      "01. Exploratory Data Analysis"
+    ]
+  },
+  {
+    "objectID": "abas/03_model_training.html",
+    "href": "abas/03_model_training.html",
+    "title": "🧠 3. Modelagem e Seleção Final do Modelo",
+    "section": "",
+    "text": "Esta seção detalha o pré-processamento final das features, a seleção de variáveis baseada em importância e a avaliação comparativa de diferentes algoritmos de Machine Learning.\n\n\n\nTodas as 56 features restantes foram submetidas a um Pipeline de pré-processamento padrão:\n\nImputação de Missing Values: Utilização da mediana para preencher valores ausentes nas variáveis numéricas e moda nas variáveis categóricas.\nPadronização (StandardScaler e One-Hot Encoding): Aplicação do StandardScaler nas variáveis númericas e One-Hot Encoding para as variáveis categóricas.\n\n\n\n\n\nPara refinar o modelo e reduzir a complexidade e o risco de overfitting, foi utilizado um modelo Random Forest para ranquear as features por importância (Feature Importance).\nObjetivo: Selecionar as Top K=20 variáveis que mais contribuem para a separação entre Bons e Maus Pagadores.\n\nO dataset para o treinamento final foi reduzido de 56 para 20 features, focado nas variáveis com maior poder preditivo.\n\n\n\n\nQuatro modelos foram comparados utilizando Cross-Validation Estratificada (5 splits) no conjunto de Treino (X_train_sel).\n\n\nAs métricas priorizadas foram:\n\nAUC (Area Under the Curve): Probabilidade de o modelo ranquear um par aleatório (Mau Pagador, Bom Pagador) na ordem correta.\nGini Coefficient: Mede a separação das distribuições.\nKS (Kolmogorov-Smirnov): Mede a separação máxima entre as distribuições acumuladas de Bons e Maus Pagadores.\n\n\n\n\n\n\n\n\n\n\n\n\n\nModelo\nKS Médio\nKS Desvio\nAUC Médio\nAUC Desvio\nGini Médio\nGini Desvio\n\n\n\n\nLightGBM\n0.447\n0.022\n0.796\n0.011\n0.593\n0.022\n\n\nLogistic Regression\n0.424\n0.013\n0.786\n0.011\n0.571\n0.022\n\n\nRandom Forest\n0.433\n0.019\n0.785\n0.009\n0.569\n0.017\n\n\nXGBoost\n0.424\n0.034\n0.783\n0.015\n0.566\n0.029\n\n\n\nConclusão do Treino: O LightGBM demonstrou o melhor desempenho preditivo bruto, estabelecendo o teto da performance com o maior AUC (0.796) e Gini (0.593). A Regressão Logística e o Random Forest se mostraram altamente competitivos, ficando a menos de 1 ponto percentual de distância no AUC.\n\n\n\n\n\nA performance de cada modelo foi avaliada no conjunto de Teste (Out-of-Time - OOT), que representa o ambiente de risco futuro. A estabilidade é medida pela capacidade do modelo de reter seu poder preditivo em dados futuros (OOT).\n\n\n\nModelo\nKS\nAUC\nGini\n\n\n\n\nLightGBM\n0.306\n0.704\n0.407\n\n\nLogistic Regression\n0.294\n0.701\n0.402\n\n\nRandom Forest\n0.265\n0.685\n0.369\n\n\nXGBoost\n0.255\n0.668\n0.337\n\n\n\nConclusão: Devido a sua performance superior, o LightGBM é o modelo escolhido para o Credit Scoring final.",
+    "crumbs": [
+      "03. Model Training"
+    ]
+  },
+  {
+    "objectID": "abas/03_model_training.html#pré-processamento-e-pipelines",
+    "href": "abas/03_model_training.html#pré-processamento-e-pipelines",
+    "title": "🧠 3. Modelagem e Seleção Final do Modelo",
+    "section": "",
+    "text": "Todas as 56 features restantes foram submetidas a um Pipeline de pré-processamento padrão:\n\nImputação de Missing Values: Utilização da mediana para preencher valores ausentes nas variáveis numéricas e moda nas variáveis categóricas.\nPadronização (StandardScaler e One-Hot Encoding): Aplicação do StandardScaler nas variáveis númericas e One-Hot Encoding para as variáveis categóricas.",
+    "crumbs": [
+      "03. Model Training"
+    ]
+  },
+  {
+    "objectID": "abas/03_model_training.html#seleção-final-de-variáveis-random-forest",
+    "href": "abas/03_model_training.html#seleção-final-de-variáveis-random-forest",
+    "title": "🧠 3. Modelagem e Seleção Final do Modelo",
+    "section": "",
+    "text": "Para refinar o modelo e reduzir a complexidade e o risco de overfitting, foi utilizado um modelo Random Forest para ranquear as features por importância (Feature Importance).\nObjetivo: Selecionar as Top K=20 variáveis que mais contribuem para a separação entre Bons e Maus Pagadores.\n\nO dataset para o treinamento final foi reduzido de 56 para 20 features, focado nas variáveis com maior poder preditivo.",
+    "crumbs": [
+      "03. Model Training"
+    ]
+  },
+  {
+    "objectID": "abas/03_model_training.html#avaliação-comparativa-de-modelos-cross-validation",
+    "href": "abas/03_model_training.html#avaliação-comparativa-de-modelos-cross-validation",
+    "title": "🧠 3. Modelagem e Seleção Final do Modelo",
+    "section": "",
+    "text": "Quatro modelos foram comparados utilizando Cross-Validation Estratificada (5 splits) no conjunto de Treino (X_train_sel).\n\n\nAs métricas priorizadas foram:\n\nAUC (Area Under the Curve): Probabilidade de o modelo ranquear um par aleatório (Mau Pagador, Bom Pagador) na ordem correta.\nGini Coefficient: Mede a separação das distribuições.\nKS (Kolmogorov-Smirnov): Mede a separação máxima entre as distribuições acumuladas de Bons e Maus Pagadores.\n\n\n\n\n\n\n\n\n\n\n\n\n\nModelo\nKS Médio\nKS Desvio\nAUC Médio\nAUC Desvio\nGini Médio\nGini Desvio\n\n\n\n\nLightGBM\n0.447\n0.022\n0.796\n0.011\n0.593\n0.022\n\n\nLogistic Regression\n0.424\n0.013\n0.786\n0.011\n0.571\n0.022\n\n\nRandom Forest\n0.433\n0.019\n0.785\n0.009\n0.569\n0.017\n\n\nXGBoost\n0.424\n0.034\n0.783\n0.015\n0.566\n0.029\n\n\n\nConclusão do Treino: O LightGBM demonstrou o melhor desempenho preditivo bruto, estabelecendo o teto da performance com o maior AUC (0.796) e Gini (0.593). A Regressão Logística e o Random Forest se mostraram altamente competitivos, ficando a menos de 1 ponto percentual de distância no AUC.",
+    "crumbs": [
+      "03. Model Training"
+    ]
+  },
+  {
+    "objectID": "abas/03_model_training.html#validação-final-teste-oot",
+    "href": "abas/03_model_training.html#validação-final-teste-oot",
+    "title": "🧠 3. Modelagem e Seleção Final do Modelo",
+    "section": "",
+    "text": "A performance de cada modelo foi avaliada no conjunto de Teste (Out-of-Time - OOT), que representa o ambiente de risco futuro. A estabilidade é medida pela capacidade do modelo de reter seu poder preditivo em dados futuros (OOT).\n\n\n\nModelo\nKS\nAUC\nGini\n\n\n\n\nLightGBM\n0.306\n0.704\n0.407\n\n\nLogistic Regression\n0.294\n0.701\n0.402\n\n\nRandom Forest\n0.265\n0.685\n0.369\n\n\nXGBoost\n0.255\n0.668\n0.337\n\n\n\nConclusão: Devido a sua performance superior, o LightGBM é o modelo escolhido para o Credit Scoring final.",
+    "crumbs": [
+      "03. Model Training"
+    ]
+  },
+  {
+    "objectID": "abas/05_final_model.html",
+    "href": "abas/05_final_model.html",
+    "title": "5. 🚀 Validação do Modelo Final (LightGBM)",
+    "section": "",
+    "text": "Esta fase consolida a performance do modelo LightGBM tunado, analisando em profundidade a separação de risco (ROC/KS), a distribuição do score (Taxa de Evento por Quantil) e a calibração da probabilidade de default no conjunto de Teste OOT.\n\n\n\nO modelo final (LightGBM) foi avaliado em ambos os conjuntos.\n\n\n\n\n\n\n\n\n\n\n\n\n\nBase\nAUC\nKS\nGini\nAccuracy\nPrecision\nRecall\nF1\n\n\n\n\nTeste (OOT)\n0.708\n0.314\n0.417\n0.694\n0.589\n0.159\n0.250\n\n\n\n\n\n\n\n\n\nA Curva ROC no Teste OOT confirma o poder de ranqueamento, com um AUC de 0.708.\n\n\n\n\nO KS Score de 0.314 indica que a separação máxima entre a distribuição acumulada de Bons e Maus Pagadores é de 31.4%, um resultado satisfatório.\n\n\n\n\n\n\nA análise por quantis (decis) é a tradução mais direta do poder de ranqueamento para o negócio, mostrando a concentração de risco.\nO gráfico de Taxa de Evento compara a frequência observada de default por faixas de score (quantis) no Treino e no Teste OOT.\n\nO gráfico mostra que o modelo está conseguindo organizar bem a carteira em faixas de risco. A medida que vamos do quantil 1 para o quantil 10, tanto no treino quanto na validação a taxa de inadimplência aumenta, indicando que scores piores de fato concentram clientes mais problemáticos. As curvas de treino e validação não são idênticas, mas o padrão crescente se mantém.\n\n\n\n\nKS por Safra\nA análise do KS mês a mês (por safra) é a verificação mais rigorosa da estabilidade preditiva ao longo do tempo.\n\nO KS no Teste OOT (safras 10/2014 a 12/2014) mostra uma queda de performance na última safra (12/2014). Isso pode ser um sinal de mudança no mercado ou mudança de política de crédito.\nCurva de Calibração\nA curva de calibração verifica se a probabilidade prevista (P(Default)) corresponde à frequência real de default observada.\n\nO modelo ranqueia bem e tem uma calibração aceitável nas faixas centrais, mas tende a subestimar a inadimplência tanto nos clientes de risco baixo (especialmente em validação) quanto, principalmente, nos de maior risco em treino. Faz sentido aplicar uma etapa extra de recalibração (Platt, isotônica ou ajuste por faixas de score).\n\n\n\nNa análise de estabilidade das variáveis entre o período de treino e o período de teste, utilizamos o Population Stability Index (PSI), calculado a partir da distribuição das features no conjunto de desenvolvimento (treino) em comparação com o conjunto de teste. Seguindo a prática de mercado, interpretamos os valores de PSI da seguinte forma:\nPSI &lt; 0,10 → variável estável;\n0,10 ≤ PSI ≤ 0,25 → mudança moderada;\nPSI &gt; 0,25 → mudança severa na distribuição.\nA maior parte das variáveis do modelo apresentou PSI baixo ou moderado, indicando comportamento relativamente estável entre os períodos. No entanto, duas variáveis chamaram atenção: VAR_53 e VAR_54, com PSI acima de 0,6, respectivamente, claramente acima do limiar de mudança severa.\nElas são reconhecidamente instáveis, sendo recomendável retirar elas do treinamento.",
+    "crumbs": [
+      "05. Final Model"
+    ]
+  },
+  {
+    "objectID": "abas/05_final_model.html#métricas-de-desempenho-finais",
+    "href": "abas/05_final_model.html#métricas-de-desempenho-finais",
+    "title": "5. 🚀 Validação do Modelo Final (LightGBM)",
+    "section": "",
+    "text": "O modelo final (LightGBM) foi avaliado em ambos os conjuntos.\n\n\n\n\n\n\n\n\n\n\n\n\n\nBase\nAUC\nKS\nGini\nAccuracy\nPrecision\nRecall\nF1\n\n\n\n\nTeste (OOT)\n0.708\n0.314\n0.417\n0.694\n0.589\n0.159\n0.250",
+    "crumbs": [
+      "05. Final Model"
+    ]
+  },
+  {
+    "objectID": "abas/05_final_model.html#curvas-de-ranqueamento",
+    "href": "abas/05_final_model.html#curvas-de-ranqueamento",
+    "title": "5. 🚀 Validação do Modelo Final (LightGBM)",
+    "section": "",
+    "text": "A Curva ROC no Teste OOT confirma o poder de ranqueamento, com um AUC de 0.708.\n\n\n\n\nO KS Score de 0.314 indica que a separação máxima entre a distribuição acumulada de Bons e Maus Pagadores é de 31.4%, um resultado satisfatório.",
+    "crumbs": [
+      "05. Final Model"
+    ]
+  },
+  {
+    "objectID": "abas/05_final_model.html#taxa-de-evento-por-quantil-lift-analysis",
+    "href": "abas/05_final_model.html#taxa-de-evento-por-quantil-lift-analysis",
+    "title": "5. 🚀 Validação do Modelo Final (LightGBM)",
+    "section": "",
+    "text": "A análise por quantis (decis) é a tradução mais direta do poder de ranqueamento para o negócio, mostrando a concentração de risco.\nO gráfico de Taxa de Evento compara a frequência observada de default por faixas de score (quantis) no Treino e no Teste OOT.\n\nO gráfico mostra que o modelo está conseguindo organizar bem a carteira em faixas de risco. A medida que vamos do quantil 1 para o quantil 10, tanto no treino quanto na validação a taxa de inadimplência aumenta, indicando que scores piores de fato concentram clientes mais problemáticos. As curvas de treino e validação não são idênticas, mas o padrão crescente se mantém.",
+    "crumbs": [
+      "05. Final Model"
+    ]
+  },
+  {
+    "objectID": "abas/05_final_model.html#estabilidade-temporal-do-ks-e-calibração",
+    "href": "abas/05_final_model.html#estabilidade-temporal-do-ks-e-calibração",
+    "title": "5. 🚀 Validação do Modelo Final (LightGBM)",
+    "section": "",
+    "text": "KS por Safra\nA análise do KS mês a mês (por safra) é a verificação mais rigorosa da estabilidade preditiva ao longo do tempo.\n\nO KS no Teste OOT (safras 10/2014 a 12/2014) mostra uma queda de performance na última safra (12/2014). Isso pode ser um sinal de mudança no mercado ou mudança de política de crédito.\nCurva de Calibração\nA curva de calibração verifica se a probabilidade prevista (P(Default)) corresponde à frequência real de default observada.\n\nO modelo ranqueia bem e tem uma calibração aceitável nas faixas centrais, mas tende a subestimar a inadimplência tanto nos clientes de risco baixo (especialmente em validação) quanto, principalmente, nos de maior risco em treino. Faz sentido aplicar uma etapa extra de recalibração (Platt, isotônica ou ajuste por faixas de score).",
+    "crumbs": [
+      "05. Final Model"
+    ]
+  },
+  {
+    "objectID": "abas/05_final_model.html#psi",
+    "href": "abas/05_final_model.html#psi",
+    "title": "5. 🚀 Validação do Modelo Final (LightGBM)",
+    "section": "",
+    "text": "Na análise de estabilidade das variáveis entre o período de treino e o período de teste, utilizamos o Population Stability Index (PSI), calculado a partir da distribuição das features no conjunto de desenvolvimento (treino) em comparação com o conjunto de teste. Seguindo a prática de mercado, interpretamos os valores de PSI da seguinte forma:\nPSI &lt; 0,10 → variável estável;\n0,10 ≤ PSI ≤ 0,25 → mudança moderada;\nPSI &gt; 0,25 → mudança severa na distribuição.\nA maior parte das variáveis do modelo apresentou PSI baixo ou moderado, indicando comportamento relativamente estável entre os períodos. No entanto, duas variáveis chamaram atenção: VAR_53 e VAR_54, com PSI acima de 0,6, respectivamente, claramente acima do limiar de mudança severa.\nElas são reconhecidamente instáveis, sendo recomendável retirar elas do treinamento.",
+    "crumbs": [
+      "05. Final Model"
+    ]
+  }
+]

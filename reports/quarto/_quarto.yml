@@ -1,6 +1,6 @@
 project:
   type: website
-  output-dir: docs
+  output-dir: ../../docs
 
 website:
   title: 'Modelo de Credit Scoring | Case Técnico'
