@@ -26,7 +26,7 @@ Este repositório contém a solução desenvolvida para um case técnico de **Ci
 │   ├── 02_feature_engineering.ipynb # Criação/seleção de variáveis
 │   ├── 03_model_training.ipynb         # Treino, tuning e comparação de modelos
 │   └── 04_tunning.ipynb # Tunning do modelo
-│   └── 05_tunning.ipynb # Análises finais e gráficos
+│   └── 05_final_model.ipynb # Análises finais e gráficos
 ├── reports/
 │   ├── figures/       # Imagens e gráficos gerados
 │   └── quarto/        # Ferramenta para visualização
